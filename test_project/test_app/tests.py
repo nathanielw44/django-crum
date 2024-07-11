@@ -38,7 +38,11 @@ class TestCRUM(TestCase):
         # For test coverage.
         import crum
         reload_module(crum)
-        # Test anonymous user.
+
+        # This should fail! Testing the CI test runner
+        self.assertEqual('this is not', 'that')
+
+        # Test anonymous user
         self.assertEqual(get_current_user(), None)
         url = reverse('test_app:index')
         response = self.client.get(url)
